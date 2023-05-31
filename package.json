@@ -9,6 +9,11 @@
     "lint": "next lint",
     "test": "jest"
   },
+  "lint-staged": {
+    "src/**/*": [
+      "npx eslint --fix"
+    ]
+  },
   "dependencies": {
     "@types/node": "20.2.5",
     "@types/react": "18.2.7",
