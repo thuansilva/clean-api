@@ -28,19 +28,24 @@
     "@typescript-eslint",
     "react-hooks",
     "prettier",
-    "eslint-plugin-import-helpers"
+    "eslint-plugin-import-helpers",
+    "import-helpers"
   ],
   "rules": {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/react-in-jsx-scope": "off",
     "prettier/prettier": "error",
+    "space-before-function-paren": "off",
+    "react/prop-types": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
     "import-helpers/order-imports": [
       "warn",
       {
         "newlinesBetween": "always",
         "groups": [
-          ["/^react/", "/^next/", "/@next/"],
+          ["/^react/", "/^next/"],
           "module",
           "/^@shared/",
           "absolute",
