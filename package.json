@@ -8,11 +8,15 @@
     "start": "next start",
     "lint": "npx lint",
     "lint-staged": "eslint src --max-warnings=0",
-    "test": "jest"
+    "test": "jest --passWithNoTests",
+    "test:watch": "npm test -- --watch",
+    "test:staged": "npm test -- --findRelatedTests",
+    "test:ci": "npm test -- --coverage"
   },
   "lint-staged": {
     "src/**/*": [
-      "npm run lint-staged --fix"
+      "npm run lint-staged --fix",
+      "npm run test:staged"
     ]
   },
   "dependencies": {
