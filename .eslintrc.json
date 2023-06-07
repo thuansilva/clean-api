@@ -49,6 +49,7 @@
           ["/^react/", "/^next/"],
           "module",
           "/^@shared/",
+          "/^~/",
           "absolute",
           "/^components/",
           "/^pages/",
