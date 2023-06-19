@@ -2,6 +2,7 @@ import { faker } from '@faker-js/faker';
 
 import { HttpStatusCode } from '~/data/protocols/http/http-response';
 import { InvalidCredentialsError } from '~/domain/errors/invalid-credentials-errors';
+import { UnexpectedError } from '~/domain/errors/unexpected-errors';
 import { mockAuthentication } from '~/domain/test/mock-authentication';
 
 import { HttpPostClientSpy } from '../../test/mock-http-client';
@@ -35,7 +36,7 @@ describe('Remote Authentication', () => {
     expect(httpPostClientSpy.body).toBe(authenticationParams);
   });
 
-  test('Should throw InvalidCredential error if HttpPostClient return 401 ', async () => {
+  test('Should throw InvalidCredential error if HttpPostClient return 401', async () => {
     const { httpPostClientSpy, sut } = makeSut();
     httpPostClientSpy.response = {
       statusCode: HttpStatusCode.unauthorized,
@@ -43,5 +44,35 @@ describe('Remote Authentication', () => {
     const promise = sut.auth(mockAuthentication());
 
     await expect(promise).rejects.toThrow(new InvalidCredentialsError());
+  });
+
+  test('Should throw InvalidCredential error if HttpPostClient return 400', async () => {
+    const { httpPostClientSpy, sut } = makeSut();
+    httpPostClientSpy.response = {
+      statusCode: HttpStatusCode.badRequest,
+    };
+    const promise = sut.auth(mockAuthentication());
+
+    await expect(promise).rejects.toThrow(new UnexpectedError());
+  });
+
+  test('Should throw InvalidCredential error if HttpPostClient return 500', async () => {
+    const { httpPostClientSpy, sut } = makeSut();
+    httpPostClientSpy.response = {
+      statusCode: HttpStatusCode.serverError,
+    };
+    const promise = sut.auth(mockAuthentication());
+
+    await expect(promise).rejects.toThrow(new UnexpectedError());
+  });
+
+  test('Should throw InvalidCredential error if HttpPostClient return 404', async () => {
+    const { httpPostClientSpy, sut } = makeSut();
+    httpPostClientSpy.response = {
+      statusCode: HttpStatusCode.notFound,
+    };
+    const promise = sut.auth(mockAuthentication());
+
+    await expect(promise).rejects.toThrow(new UnexpectedError());
   });
 });
