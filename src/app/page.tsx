@@ -1,9 +1,11 @@
-// import styles from './page.module.css';
+import './global.scss';
+
+import Login from '~/presentation/pages/login/login';
 
 export default function Home() {
   return (
     <main>
-      <p>Hello World</p>
+      <Login />
     </main>
   );
 }

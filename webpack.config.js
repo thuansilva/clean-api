@@ -19,14 +19,14 @@ module.exports = {
         loader: 'ts-loader',
         exclude: /node_modules/,
       },
-      {
-        test: /\.scss/,
-        use: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader', options: { module: true } },
-          { loader: 'sass-loader' },
-        ],
-      },
+      // {
+      //   test: /\.scss/,
+      //   use: [
+      //     { loader: 'style-loader' },
+      //     { loader: 'css-loader', options: { module: true } },
+      //     { loader: 'sass-loader' },
+      //   ],
+      // },
     ],
   },
   devServer: {
