@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Spinner } from '~/presentation/components';
 
-import Styles from './form-status-styles.scss';
+import Styles from './form-status-styles.module.scss';
 
 type Props = {
   state: any;

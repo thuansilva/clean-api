@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 
 import { Logo } from '~/presentation/components';
 
-import Styles from './login-header-styles.scss';
+import Styles from './login-header-styles.module.scss';
 
 const LoginHeader: React.FC = () => {
   return (
