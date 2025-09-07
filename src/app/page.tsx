@@ -1,4 +1,4 @@
-import './global.scss';
+import '../presentation/styles/global.scss';
 
 import Login from '~/presentation/pages/login/login';
 
