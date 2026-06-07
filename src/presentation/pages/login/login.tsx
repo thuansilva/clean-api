@@ -1,13 +1,34 @@
+'use client';
 import React from 'react';
 
-import styles from './login-styles.module.scss';
+import {
+  Footer,
+  InputBase as Input,
+  LoginHeader,
+  FormStatusBase,
+} from '~/presentation/components';
 
-export default function Login() {
+import Styles from './login-styles.module.scss';
+
+const Login: React.FC = () => {
   return (
-    <div className={styles.login}>
-      <header className={styles.header}>dss</header>
-      <form className={styles.form}>ds</form>
-      <footer className={styles.footer}>ds</footer>
+    <div className={Styles.loginWrap}>
+      <LoginHeader />
+      <form className={Styles.form}>
+        <h2>Login</h2>
+        <Input type="email" name="email" placeholder="Digite seu e-mail" />
+        <Input type="password" name="password" placeholder="Digite sua senha" />
+        <button className={Styles.submit} type="submit">
+          Entrar
+        </button>
+        <span className={Styles.link}>Criar conta</span>
+        {/* <Link data-testid="signup-link" to="/signup" className={Styles.link}>
+          Criar conta
+        </Link> */}
+        <FormStatusBase state={false} />
+      </form>
+      <Footer />
     </div>
   );
-}
+};
+export default Login;
